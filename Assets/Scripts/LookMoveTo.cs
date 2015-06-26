@@ -28,7 +28,7 @@ public class LookMoveTo : MonoBehaviour {
 			RaycastHit hit = hits [i];
 			hitObject = hit.collider.gameObject;
 			if (hitObject == ground) {
-				Debug.Log ("Hit (x,y,z): " + hit.point.ToString ("F2"));
+				// Debug.Log ("Hit (x,y,z): " + hit.point.ToString ("F2"));
 				if (infoBubble != null) {
 					infoText.text = "X:" + hit.point.x.ToString("F2") + ", Z:" + hit.point.z.ToString("F2");
 					infoBubble.LookAt(camera.transform.position);
