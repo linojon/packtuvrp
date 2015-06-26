@@ -30,10 +30,18 @@ public class ButtonExecute : MonoBehaviour {
 		}
 		if (currentButton != null) {
 			countDown -= Time.deltaTime;
-			if (Input.anyKey || countDown < 0.0f) { // click
+			if (keyPressed () || countDown < 0.0f) { // click
 				ExecuteEvents.Execute<IPointerClickHandler> (currentButton, data, ExecuteEvents.pointerClickHandler);
 				countDown = timeToSelect;
 			}
 		}
+	}
+
+	private bool keyPressed() {
+#if (UNITY_ANDROID || UNITY_IPHONE)
+		return Cardboard.SDK.CardboardTriggered;
+#else
+		return Input.anyKeyDown;
+#endif
 	}
 }
