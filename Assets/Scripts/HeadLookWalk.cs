@@ -1,20 +1,18 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class HeadLookWalk : MonoBehaviour {
+	public bool walking = false;
 	public float velocity = 0.7f;
+
 	private CharacterController controller;
-	private HeadGesture gesture;
-	private bool walking;
 
 	void Start() {
 		controller = GetComponent<CharacterController> ();
-		gesture = GameObject.Find ("GameController").GetComponent<HeadGesture> ();
-		walking = false;
 	}
 
 	void Update () {
-		if (gesture.isMovingDown || keyPressed()) {
+		if (keyPressed()) {
 			walking = !walking;
 		}
 		if (walking) {
